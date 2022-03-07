@@ -4,7 +4,7 @@ pipeline {
 	
 	stage('Non-Parallel Stage') {
 	    agent {
-                        label "master"
+                        label "GeneralNode"
                 }
         steps {
                 echo 'This stage will be executed first'
@@ -16,19 +16,19 @@ pipeline {
             parallel {
                 stage('Test On Windows') {
                     agent {
-                        label "Windows_Node"
+                        label "WindowsKnoten"
                     }
                     steps {
-                        echo "Task1 on Agent"
+                        echo "Task1 on Windows Agent"
                     }
                     
                 }
-                stage('Test On Master') {
+                stage('Test On General Node') {
                     agent {
-                        label "master"
+                        label "GeneralNode"
                     }
                     steps {
-						echo "Task1 on Master"
+						echo "Task1 on General Node"
 					}
                 }
             }
